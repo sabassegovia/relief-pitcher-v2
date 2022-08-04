@@ -17,7 +17,7 @@ const ListBreweries = ({ brewery, setBrewery }) => {
           {brewery.name}
         </a>
         <p>
-          {brewery.street || ""}&nbsp;{brewery.city || ""}&#44; {brewery.state || ""}&nbsp;{brewery.postal_code.slice(0,5) || ""}
+          &nbsp;{brewery.street || ""}&nbsp;{brewery.city || ""}&#44; {brewery.state || ""}&nbsp;{brewery.postal_code.slice(0,5) || ""}
         </p>
       </li>
       </div>

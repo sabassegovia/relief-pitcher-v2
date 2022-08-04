@@ -76,6 +76,14 @@ export default function SearchBarResults({ searchInput }) {
     if (getBrewery.phone) {
       phoneFormatted +=  '(' + getBrewery.phone.slice(0, 3) + ') ' +   getBrewery.phone.slice(3, 6) + ' - ' + getBrewery.phone.slice(6)
     }
+    let lastUpdate ='';
+    if (getBrewery.updated_at) {
+      let tempArr = getBrewery.updated_at.split('-');
+      lastUpdate += tempArr[1] + '/';
+      lastUpdate += tempArr[2].slice(0, 2) + '/';
+      lastUpdate += tempArr[0];
+      console.log(lastUpdate);
+    }
 
     return (
       <>
@@ -86,11 +94,14 @@ export default function SearchBarResults({ searchInput }) {
             rel="noopener noreferrer">{getBrewery.name}
           </a>
           <p>
-            {addressInfo}
-            <br />
-            {phoneFormatted}
+            &nbsp;{addressInfo}
           </p>
-          <br />
+          <p>
+            &nbsp;{phoneFormatted}
+          </p>
+          <p className={ListBreweriesCSS.updatedOnText}>
+            &nbsp;Last updated on {lastUpdate}
+          </p>
         </div>
         <span className={ListBreweriesCSS.centerBtns}>
           <button onClick={() => setBrewery(null)}>

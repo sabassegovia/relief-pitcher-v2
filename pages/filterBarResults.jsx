@@ -92,6 +92,14 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
     if (getBrewery.phone) {
       phoneFormatted +=  '(' + getBrewery.phone.slice(0, 3) + ') ' +   getBrewery.phone.slice(3, 6) + ' - ' + getBrewery.phone.slice(6)
     }
+    let lastUpdate ='';
+    if (getBrewery.updated_at) {
+      let tempArr = getBrewery.updated_at.split('-');
+      lastUpdate += tempArr[1] + '/';
+      lastUpdate += tempArr[2].slice(0, 2) + '/';
+      lastUpdate += tempArr[0];
+      console.log(lastUpdate);
+    }
     return (
       <>
         <div className={ListBreweriesCSS.singlewidecard}>
@@ -101,10 +109,14 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
             rel="noopener noreferrer">{getBrewery.name}
           </a>
           <p>
-          {addressInfo}
-          <br />
-          &nbsp;{phoneFormatted}
-        </p>
+            &nbsp;{addressInfo}
+          </p>
+          <p>
+            &nbsp;{phoneFormatted}
+          </p>
+          <p className={ListBreweriesCSS.updatedOnText}>
+            &nbsp;Last updated on {lastUpdate}
+          </p>
         </div>
         <span className={ListBreweriesCSS.centerBtns}>
           <button onClick={() => setBrewery(null)}>

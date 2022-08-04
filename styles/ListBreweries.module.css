@@ -40,3 +40,9 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.updatedOnText {
+  text-align: center;
+  font-size: xx-small;
+  font-weight:bold;
+}
