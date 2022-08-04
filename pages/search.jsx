@@ -1,19 +1,25 @@
 import React from 'react';
 import FilterSearch from '../src/components/filterSearch.jsx';
 import SearchBar from '../src/components/searchBar.jsx';
+import SearchCSS from '/styles/Search.module.css';
 
-const SearchPage = (props) => {
+const Search = (props) => {
   return (
     <div id='confirmed'>
+      <div >
+        <h1 className={SearchCSS.searchContainers}>Relief Pitcher</h1>
+        <p></p>
+        <h3 className={SearchCSS.searchContainers}>Let&apos;s find you a drink&#33;</h3>
+      </div>
       {/**overall container for both search components*/}
-      <h1>We are in the approved 21 y/o page</h1>
-      <div>
+      <div className={SearchCSS.searchContainers}>
         <SearchBar
           searchInput={props.searchInput}
           setSearchInput={props.setSearchInput}
           query={props.query}
           setQuery={props.setQuery}
-          />
+        />
+        <span>OR</span>
         <FilterSearch
           state={props.state}
           setState={props.setState}
@@ -33,4 +39,4 @@ const SearchPage = (props) => {
   )
 }
 
-export default SearchPage;
+export default Search;

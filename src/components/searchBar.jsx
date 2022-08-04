@@ -17,7 +17,7 @@ const SearchBar = ({searchInput, setSearchInput, query, setQuery}) => {
   }
 
   return (
-    <div>in search bar
+    <div>
       <form onSubmit={handleSubmit}>
         <label>Search for brewery: </label>
         <input
