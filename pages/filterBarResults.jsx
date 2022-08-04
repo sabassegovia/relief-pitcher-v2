@@ -51,24 +51,47 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
     return <h2 className={ListBreweriesCSS.singlewidecard}>Loading...</h2>
   } else if (getBrewery === null) {
     return (
-      <div>
-        <ol>
-          {searchResults.map((brewery, i) => {
-            return <ListBreweries
-              key={i + brewery.id}
-              brewery={brewery}
-              setBrewery={setBrewery}
-            />
-          })}
-        </ol>
-        <Link href='/search'>
-          <button>
-            Return to Search
-          </button>
-        </Link>
-      </div>
+      <>
+        <div>
+          <ol>
+            {searchResults.map((brewery, i) => {
+              return <ListBreweries
+                key={i + brewery.id}
+                brewery={brewery}
+                setBrewery={setBrewery}
+              />
+            })}
+          </ol>
+        </div>
+        <span className={ListBreweriesCSS.centerBtn}>
+          <Link href='/search'>
+            <button>
+              Return to Search
+            </button>
+          </Link>
+        </span>
+      </>
     )
   } else {
+    let addressInfo = '';
+    if (getBrewery.street) {
+      addressInfo += getBrewery.street;
+    }
+    if (getBrewery.city) {
+      addressInfo += ' ' + getBrewery.city + ', ';
+    } else {
+      addressInfo += ', '
+    }
+    if (getBrewery.state) {
+      addressInfo += ' ' + getBrewery.state + ', ';
+    }
+    if (getBrewery.postal_code) {
+      addressInfo += getBrewery.postal_code.slice(0, 5);
+    }
+    let phoneFormatted = '';
+    if (getBrewery.phone) {
+      phoneFormatted +=  '(' + getBrewery.phone.slice(0, 3) + ') ' +   getBrewery.phone.slice(3, 6) + ' - ' + getBrewery.phone.slice(6)
+    }
     return (
       <>
         <div className={ListBreweriesCSS.singlewidecard}>
@@ -78,20 +101,21 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
             rel="noopener noreferrer">{getBrewery.name}
           </a>
           <p>
-            {getBrewery.street}&nbsp;{getBrewery.city}&#44;&nbsp;{getBrewery.state}&nbsp;{getBrewery.postal_code.slice(0, 5)}
-            <br />
-            &nbsp;p&#58;&nbsp;&#40;{getBrewery.phone.slice(0, 3)}&#41; &#8211; {getBrewery.phone.slice(3, 7)} &#8211; {getBrewery.phone.slice(7)}
-          </p>
+          {addressInfo}
           <br />
+          &nbsp;{phoneFormatted}
+        </p>
         </div>
-        <button onClick={() => setBrewery(null)}>
-          Return to List
-        </button>
-        <Link href='/search'>
-          <button>
-            Return to Search
+        <span className={ListBreweriesCSS.centerBtns}>
+          <button onClick={() => setBrewery(null)}>
+            Return to List
           </button>
-        </Link>
+          <Link href='/search'>
+            <button>
+              Return to Search
+            </button>
+          </Link>
+        </span>
       </>
     )
   }

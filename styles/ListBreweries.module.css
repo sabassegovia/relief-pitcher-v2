@@ -31,3 +31,12 @@
   box-shadow: 0 10px 20px rgba(102, 0, 153,0.8), 0 10px 20px rgba(102, 0, 153,0.8);
 
 }
+
+.centerBtn {
+  display: flex;
+  justify-content: space-around;
+}
+.centerBtns {
+  display: flex;
+  justify-content: space-evenly;
+}

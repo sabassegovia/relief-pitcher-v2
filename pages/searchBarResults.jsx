@@ -28,6 +28,9 @@ export default function SearchBarResults({ searchInput }) {
     fetchSearchresults();
   }, [searchInput])
 
+  let addressInfo = '';
+
+
   if (isLoading) {
     return <h2 className={ListBreweriesCSS.singlewidecard}>Loading...</h2>
   } else if (getBrewery === null) {
@@ -44,39 +47,62 @@ export default function SearchBarResults({ searchInput }) {
             })}
           </ol>
         </div>
-        <Link href='/search'>
-          <button>
-            Return to Search
-          </button>
-        </Link>
+        <span className={ListBreweriesCSS.centerBtn}>
+          <Link href='/search'>
+            <button>
+              Return to Search
+            </button>
+          </Link>
+        </span>
       </>
     )
   } else {
-    //replace with a function for reuse
+    let addressInfo = '';
+    if (getBrewery.street) {
+      addressInfo += getBrewery.street;
+    }
+    if (getBrewery.city) {
+      addressInfo += ' ' + getBrewery.city + ', ';
+    } else {
+      addressInfo += ', '
+    }
+    if (getBrewery.state) {
+      addressInfo += ' ' + getBrewery.state + ', ';
+    }
+    if (getBrewery.postal_code) {
+      addressInfo += getBrewery.postal_code.slice(0, 5);
+    }
+    let phoneFormatted = '';
+    if (getBrewery.phone) {
+      phoneFormatted +=  '(' + getBrewery.phone.slice(0, 3) + ') ' +   getBrewery.phone.slice(3, 6) + ' - ' + getBrewery.phone.slice(6)
+    }
+
     return (
       <>
-      <div className={ListBreweriesCSS.singlewidecard}>
-        <a
-          href={getBrewery.website_url || `https://www.google.com/search?q=${getBrewery.name}`}
-          target="_blank"
-          rel="noopener noreferrer">{getBrewery.name}
-        </a>
-        <p>
-          {getBrewery.street}&nbsp;{getBrewery.city}&#44;&nbsp;{getBrewery.state}&nbsp;{getBrewery.postal_code.slice(0, 5)}
+        <div className={ListBreweriesCSS.singlewidecard}>
+          <a
+            href={getBrewery.website_url || `https://www.google.com/search?q=${getBrewery.name}`}
+            target="_blank"
+            rel="noopener noreferrer">{getBrewery.name}
+          </a>
+          <p>
+            {addressInfo}
+            <br />
+            {phoneFormatted}
+          </p>
           <br />
-          &nbsp;p&#58;&nbsp;&#40;{getBrewery.phone.slice(0, 3) || ""}&#41; &#8211; {getBrewery.phone.slice(3, 7) || ""} &#8211; {getBrewery.phone.slice(7) || ""}
-        </p>
-        <br />
-      </div>
-      <button onClick={() => setBrewery(null)}>
-        Return to List
-      </button>
-      <Link href='/search'>
-        <button>
-          Return to Search
-        </button>
-      </Link>
-    </>
+        </div>
+        <span className={ListBreweriesCSS.centerBtns}>
+          <button onClick={() => setBrewery(null)}>
+            Return to List
+          </button>
+          <Link href='/search'>
+            <button>
+              Return to Search
+            </button>
+          </Link>
+        </span>
+      </>
     )
   }
 }
