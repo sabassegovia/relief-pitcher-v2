@@ -1,7 +1,6 @@
 import React, { useState, setState } from "react";
 import Link from 'next/Link';
 import ListBreweriesCSS from '../../styles/ListBreweries.module.css';
-// import SearchResultsCSS from '../../styles/SearchResults.module.css';
 
 const ListBreweries = ({ brewery, setBrewery }) => {
 

@@ -14,3 +14,20 @@
   box-shadow: 0 10px 20px rgba(38, 50, 102,0.8), 0 10px 20px rgba(38, 50, 102,0.8);
 
 }
+.singlewidecard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border:2px solid #9a9b9c;
+  margin:30px 0px 30px 0px;
+  width:50%;
+  height: 50%;
+  margin:30px auto;
+}
+
+.singlewidecard:hover {
+  color: #1b1d20;
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(38, 50, 102,0.8), 0 10px 20px rgba(38, 50, 102,0.8);
+
+}

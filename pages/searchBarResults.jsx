@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ListBreweries from '../src/components/ListBreweries.jsx';
 import Link from 'next/Link';
-import SearchResultsCSS from '/styles/SearchResults.module.css';
+import ListBreweriesCSS from '/styles/ListBreweries.module.css';
 
 export default function SearchBarResults({ searchInput }) {
   const [isLoading, setisLoading] = useState(true);
@@ -29,7 +29,7 @@ export default function SearchBarResults({ searchInput }) {
   }, [searchInput])
 
   if (isLoading) {
-    return <h2>Loading...</h2>
+    return <h2 className={ListBreweriesCSS.singlewidecard}>Loading...</h2>
   } else if (getBrewery === null) {
     return (
       <>
@@ -55,21 +55,26 @@ export default function SearchBarResults({ searchInput }) {
     //replace with a function for reuse
     return (
       <div>
-        <a
-        href={getBrewery.website_url}
-        target="_blank"
-        rel="noopener noreferrer">{getBrewery.name}
-      </a>
-        : {getBrewery.city}, {getBrewery.state}
-        <br/>
-        <button onClick={() => setBrewery(null)}>
-          Return to List
-        </button>
-        <Link href='/search'>
-          <button>
-            Return to Search
+        <ol>
+          <li className={ListBreweriesCSS.singlewidecard}>
+            <a
+              href={getBrewery.website_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {getBrewery.name}
+            </a>
+            : {getBrewery.city}, {getBrewery.state}<br />
+          </li>
+        </ol>
+          <button onClick={() => setBrewery(null)}>
+            Return to List
           </button>
-        </Link>
+          <Link href='/search'>
+            <button>
+              Return to Search
+            </button>
+          </Link>
       </div>)
   }
 }

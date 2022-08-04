@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ListBreweries from '../src/components/ListBreweries.jsx';
 import Link from 'next/Link';
-import SearchResultsCSS from '/styles/SearchResults.module.css';
+import ListBreweriesCSS from '/styles/ListBreweries.module.css';
 
 export default function FilterBarResults({ state, zip, type, feature, keyword }) {
   const [isLoading, setisLoading] = useState(true);
@@ -48,7 +48,7 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
   }, [state, zip, type, feature, keyword]);
 
   if (isLoading) {
-    return <h2>Loading...</h2>
+    return <h2 className={ListBreweriesCSS.singlewidecard}>Loading...</h2>
   } else if (getBrewery === null) {
     return (
       <div>
@@ -72,7 +72,7 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
     //replace with a function for reuse
     return (
       <>
-      <div>
+      <div className={ListBreweriesCSS.singlewidecard}>
         <a
         href={getBrewery.website_url || `https://www.google.com/search?q=${getBrewery.name}`}
         target="_blank"
