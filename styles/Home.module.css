@@ -114,3 +114,26 @@
     flex-direction: column;
   }
 }
+
+.linkColor:link {
+  color: #660099;
+  background-color: transparent;
+  text-decoration: none;
+}
+.linkColor:visited {
+  color: #660099;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.linkColor:hover {
+  color: #660099;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.linkColor:active {
+  color: #660099;
+  background-color: transparent;
+  text-decoration: underline;
+}

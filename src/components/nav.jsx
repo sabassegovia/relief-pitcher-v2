@@ -14,4 +14,4 @@ const Nav = () => (
   </header>
 )
 
-export default Nav
+export default Nav;

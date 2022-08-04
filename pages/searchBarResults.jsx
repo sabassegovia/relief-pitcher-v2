@@ -54,27 +54,29 @@ export default function SearchBarResults({ searchInput }) {
   } else {
     //replace with a function for reuse
     return (
-      <div>
-        <ol>
-          <li className={ListBreweriesCSS.singlewidecard}>
-            <a
-              href={getBrewery.website_url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {getBrewery.name}
-            </a>
-            : {getBrewery.city}, {getBrewery.state}<br />
-          </li>
-        </ol>
-          <button onClick={() => setBrewery(null)}>
-            Return to List
-          </button>
-          <Link href='/search'>
-            <button>
-              Return to Search
-            </button>
-          </Link>
-      </div>)
+      <>
+      <div className={ListBreweriesCSS.singlewidecard}>
+        <a
+          href={getBrewery.website_url || `https://www.google.com/search?q=${getBrewery.name}`}
+          target="_blank"
+          rel="noopener noreferrer">{getBrewery.name}
+        </a>
+        <p>
+          {getBrewery.street}&nbsp;{getBrewery.city}&#44;&nbsp;{getBrewery.state}&nbsp;{getBrewery.postal_code.slice(0, 5)}
+          <br />
+          &nbsp;p&#58;&nbsp;&#40;{getBrewery.phone.slice(0, 3) || ""}&#41; &#8211; {getBrewery.phone.slice(3, 7) || ""} &#8211; {getBrewery.phone.slice(7) || ""}
+        </p>
+        <br />
+      </div>
+      <button onClick={() => setBrewery(null)}>
+        Return to List
+      </button>
+      <Link href='/search'>
+        <button>
+          Return to Search
+        </button>
+      </Link>
+    </>
+    )
   }
 }

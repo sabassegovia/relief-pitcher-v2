@@ -1,4 +1,6 @@
 .centerHeader {
   width:70%;
-  margin: 0px 30% 0px 40%;
+  margin: 0px 30% 0px 30%;
+  display:flex;
+  justify-content: center;
 }

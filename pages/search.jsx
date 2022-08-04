@@ -7,9 +7,11 @@ const Search = (props) => {
   return (
     <div id='confirmed'>
       <div >
-        <h1 className={SearchCSS.searchContainers}>Relief Pitcher</h1>
-        <p></p>
+        {/* <p>&nbsp;</p>
+        <h1 className={SearchCSS.searchContainers}>Relief Pitcher</h1> */}
+        <p>&nbsp;</p>
         <h3 className={SearchCSS.searchContainers}>Let&apos;s find you a drink&#33;</h3>
+        <p>&nbsp;</p>
       </div>
       {/**overall container for both search components*/}
       <div className={SearchCSS.searchContainers}>

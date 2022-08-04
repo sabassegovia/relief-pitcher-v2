@@ -15,7 +15,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://www.restaurantware.com/blog/post/what-are-the-different-types-of-beer/" target="_blank" rel="noreferrer">Relief Pitcher</a>
+          Welcome to <a className={styles.linkColor} href="https://www.restaurantware.com/blog/post/what-are-the-different-types-of-beer/" target="_blank" rel="noreferrer">Relief Pitcher</a>
         </h1>
 
         <h3>

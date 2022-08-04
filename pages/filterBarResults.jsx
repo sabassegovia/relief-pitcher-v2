@@ -69,17 +69,20 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
       </div>
     )
   } else {
-    //replace with a function for reuse
     return (
       <>
-      <div className={ListBreweriesCSS.singlewidecard}>
-        <a
-        href={getBrewery.website_url || `https://www.google.com/search?q=${getBrewery.name}`}
-        target="_blank"
-        rel="noopener noreferrer">{getBrewery.name}
-      </a>
-        : {getBrewery.city}, {getBrewery.state}
-        <br/>
+        <div className={ListBreweriesCSS.singlewidecard}>
+          <a
+            href={getBrewery.website_url || `https://www.google.com/search?q=${getBrewery.name}`}
+            target="_blank"
+            rel="noopener noreferrer">{getBrewery.name}
+          </a>
+          <p>
+            {getBrewery.street}&nbsp;{getBrewery.city}&#44;&nbsp;{getBrewery.state}&nbsp;{getBrewery.postal_code.slice(0, 5)}
+            <br />
+            &nbsp;p&#58;&nbsp;&#40;{getBrewery.phone.slice(0, 3)}&#41; &#8211; {getBrewery.phone.slice(3, 7)} &#8211; {getBrewery.phone.slice(7)}
+          </p>
+          <br />
         </div>
         <button onClick={() => setBrewery(null)}>
           Return to List
@@ -93,5 +96,3 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
     )
   }
 }
-
-//fectch data using this criteria

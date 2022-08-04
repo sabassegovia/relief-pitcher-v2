@@ -3,7 +3,6 @@ import Link from 'next/Link';
 import ListBreweriesCSS from '../../styles/ListBreweries.module.css';
 
 const ListBreweries = ({ brewery, setBrewery }) => {
-
   return (
     <div>
       <li
@@ -17,9 +16,8 @@ const ListBreweries = ({ brewery, setBrewery }) => {
         >
           {brewery.name}
         </a>
-
         <p>
-          : {brewery.city}, {brewery.state}
+          {brewery.street || ""}&nbsp;{brewery.city || ""}&#44; {brewery.state || ""}&nbsp;{brewery.postal_code.slice(0,5) || ""}
         </p>
       </li>
       </div>
@@ -27,21 +25,3 @@ const ListBreweries = ({ brewery, setBrewery }) => {
 };
 
 export default ListBreweries;
-
-
-
-// import React, { Component } from 'react'
-
-// class Widecard extends Component {
-//     render() {
-//         return (
-//             <div class="widecard">
-//             <div class="compdet">
-//             <h3>{this.props.title}</h3>
-//             <h4 class="secondtext">{this.props.where}</h4>
-//             <h4 class="secondtext">{this.props.from} - {this.props.to}</h4>
-//             </div>
-//             </div>
-//             )
-//         }
-//     }
