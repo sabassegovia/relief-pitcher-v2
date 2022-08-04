@@ -72,7 +72,7 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
     return (
       <div>
         <a
-        href={getBrewery.website_url}
+        href={getBrewery.website_url || `https://www.google.com/search?q=${getBrewery.name}`}
         target="_blank"
         rel="noopener noreferrer">{getBrewery.name}
       </a>
