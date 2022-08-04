@@ -49,9 +49,16 @@ export default function SearchBarResults({ searchInput }) {
       </div>
     )
   } else {
+    //replace with a function for reuse
     return (
       <div>
-        <h4>Single brewery: {getBrewery.name}</h4>
+        <a
+        href={getBrewery.website_url}
+        target="_blank"
+        rel="noopener noreferrer">{getBrewery.name}
+      </a>
+        : {getBrewery.city}, {getBrewery.state}
+        <br/>
         <button onClick={() => setBrewery(null)}>
           Return to List
         </button>
