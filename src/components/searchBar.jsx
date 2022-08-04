@@ -4,7 +4,6 @@ import Link from 'next/Link';
 
 const SearchBar = ({searchInput, setSearchInput, query, setQuery}) => {
   const handleChange = (e) => {
-    console.log(e.target.value);
     let temp = e.target.value;
     setSearchInput(temp);
 

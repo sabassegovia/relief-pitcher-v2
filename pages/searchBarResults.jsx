@@ -23,7 +23,6 @@ export default function SearchBarResults({ searchInput }) {
 
       setSearchResults(data);
       setisLoading(false);
-      console.log(data);
     }
     fetchSearchresults();
   }, [searchInput])
@@ -82,7 +81,6 @@ export default function SearchBarResults({ searchInput }) {
       lastUpdate += tempArr[1] + '/';
       lastUpdate += tempArr[2].slice(0, 2) + '/';
       lastUpdate += tempArr[0];
-      console.log(lastUpdate);
     }
 
     return (

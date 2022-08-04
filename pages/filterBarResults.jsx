@@ -27,7 +27,6 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
         qString.push(`by_postal=${zip}`)
       }
       qString = qString.join('&');
-      console.log(qString);
       const options = {
         method: 'GET',
         headers: {
@@ -41,8 +40,6 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
 
       setSearchResults(data);
       setisLoading(false);
-
-      console.log(data);
     }
     fetchSearchresults();
   }, [state, zip, type, feature, keyword]);
@@ -98,7 +95,6 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
       lastUpdate += tempArr[1] + '/';
       lastUpdate += tempArr[2].slice(0, 2) + '/';
       lastUpdate += tempArr[0];
-      console.log(lastUpdate);
     }
     return (
       <>
