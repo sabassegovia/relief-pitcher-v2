@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ListBreweries from '../src/components/ListBreweries.jsx';
 import Link from 'next/Link';
+import SearchResultsCSS from '/styles/SearchResults.module.css';
 
 export default function FilterBarResults({ state, zip, type, feature, keyword }) {
   const [isLoading, setisLoading] = useState(true);
@@ -70,6 +71,7 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
   } else {
     //replace with a function for reuse
     return (
+      <>
       <div>
         <a
         href={getBrewery.website_url || `https://www.google.com/search?q=${getBrewery.name}`}
@@ -78,6 +80,7 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
       </a>
         : {getBrewery.city}, {getBrewery.state}
         <br/>
+        </div>
         <button onClick={() => setBrewery(null)}>
           Return to List
         </button>
@@ -86,7 +89,7 @@ export default function FilterBarResults({ state, zip, type, feature, keyword })
             Return to Search
           </button>
         </Link>
-      </div>
+      </>
     )
   }
 }

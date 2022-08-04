@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ListBreweries from '../src/components/ListBreweries.jsx';
 import Link from 'next/Link';
+import SearchResultsCSS from '/styles/SearchResults.module.css';
 
 export default function SearchBarResults({ searchInput }) {
   const [isLoading, setisLoading] = useState(true);
@@ -31,22 +32,24 @@ export default function SearchBarResults({ searchInput }) {
     return <h2>Loading...</h2>
   } else if (getBrewery === null) {
     return (
-      <div>
-        <ol>
-          {searchResults.map((brewery, i) => {
-            return <ListBreweries
-              key={i + brewery.id}
-              brewery={brewery}
-              setBrewery={setBrewery}
-            />
-          })}
-        </ol>
+      <>
+        <div>
+          <ol>
+            {searchResults.map((brewery, i) => {
+              return <ListBreweries
+                key={i + brewery.id}
+                brewery={brewery}
+                setBrewery={setBrewery}
+              />
+            })}
+          </ol>
+        </div>
         <Link href='/search'>
           <button>
             Return to Search
           </button>
         </Link>
-      </div>
+      </>
     )
   } else {
     //replace with a function for reuse

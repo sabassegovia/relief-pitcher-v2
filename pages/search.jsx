@@ -14,6 +14,7 @@ const Search = (props) => {
       {/**overall container for both search components*/}
       <div className={SearchCSS.searchContainers}>
         <SearchBar
+
           searchInput={props.searchInput}
           setSearchInput={props.setSearchInput}
           query={props.query}
