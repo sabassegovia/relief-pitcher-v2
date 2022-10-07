@@ -3,6 +3,7 @@ import ListBreweries from '../src/components/ListBreweries.jsx';
 import Link from 'next/Link';
 import ListBreweriesCSS from '/styles/ListBreweries.module.css';
 
+
 export default function FilterBarResults({ state, zip, type, feature, keyword }) {
   const [isLoading, setisLoading] = useState(true);
   const [searchResults, setSearchResults] = useState(null);

@@ -3,7 +3,7 @@ import ListBreweries from '../src/components/ListBreweries.jsx';
 import Link from 'next/Link';
 import ListBreweriesCSS from '/styles/ListBreweries.module.css';
 
-export default function SearchBarResults({ searchInput }) {
+export default function SearchBarResults({ searchInput, Status }) {
   const [isLoading, setisLoading] = useState(true);
   const [searchResults, setSearchResults] = useState(null);
   const [getBrewery, setBrewery] = useState(null);
@@ -84,7 +84,7 @@ export default function SearchBarResults({ searchInput }) {
     }
 
     return (
-      <>
+      <div>
         <div className={ListBreweriesCSS.singlewidecard}>
           <a
             href={getBrewery.website_url || `https://www.google.com/search?q=${getBrewery.name}`}
@@ -101,6 +101,7 @@ export default function SearchBarResults({ searchInput }) {
             &nbsp;Last updated on {lastUpdate}
           </p>
         </div>
+
         <span className={ListBreweriesCSS.centerBtns}>
           <button onClick={() => setBrewery(null)}>
             Return to List
@@ -111,7 +112,8 @@ export default function SearchBarResults({ searchInput }) {
             </button>
           </Link>
         </span>
-      </>
+      </div>
     )
   }
 }
+
